@@ -1,1 +1,28 @@
-@import url('https://rcvd.github.io/logseq-css-system/output/things.css');
+@import url('./things-remote.css');
+
+/* ==== Logseq OG theme QA compatibility (2026-10-24) ====
+   Logseq 0.10 renders fenced code with CodeMirror's cm-s-lsradix theme.
+   The old css-system hid gutters only for cm-s-solarized, then forced a
+   5px sizer margin; the current 31px gutter therefore covers the first
+   two characters of every line. Hide the gutter and restore alignment. */
+.cm-s-lsradix .CodeMirror-gutters,
+.cm-s-lsradix.cm-s-dark .CodeMirror-gutters,
+.cm-s-lsradix.cm-s-light .CodeMirror-gutters,
+.CodeMirror-gutters {
+  display: none !important;
+}
+.CodeMirror-sizer {
+  margin-left: 0 !important;
+}
+
+/* The sidebar title was hard-coded to a dark grey (#5c5c5c / #595959),
+   which is unreadable on the dark sidebar. Inherit the item text colour. */
+.sidebar-item-header,
+.sidebar-item-header a,
+.sidebar-item-header span,
+.sidebar-item-header .title,
+.sidebar-item-header .page-title,
+.cp__right-sidebar-topbar a,
+.cp__right-sidebar-topbar button {
+  color: inherit !important;
+}
